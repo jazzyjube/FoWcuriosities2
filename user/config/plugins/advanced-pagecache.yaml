@@ -1,0 +1,13 @@
+enabled: false
+disabled_with_params: true
+disabled_with_query: true
+disabled_extensions:
+  - rss
+  - xml
+  - json
+whitelist:
+  - /cache-this-page
+blacklist:
+  - /error
+  - /random
+  - /dont-cache-this-page

@@ -1,0 +1,93 @@
+
+{% extends 'partials/base.html.twig' %}
+
+{% set base_route = location %}
+{% set separator = config.system.param_sep %}
+
+{% set tabs = ['Directory'] %}
+
+{% block head %}
+    {% if target is null %}
+    {{ redirect_me(base_url ~ '/flex-directory/entries') }}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% set action = action ?: 'edit' %}
+
+{% set template = (action == 'add') ? 'edit' : (action == 'delete') ? 'list' : action %}
+
+{% block titlebar %}
+    <div class="button-bar">
+        {% if action == 'list' %}
+            <a class="button" href="{{ base_url }}"><i class="fa fa-reply"></i> {{ "PLUGIN_ADMIN.BACK"|tu }}</a>
+            <a class="button" href="{{ base_url ~ '/flex-directory/' ~ target ~ '/action:add' }}"><i class="fa fa-plus"></i> {{ "PLUGIN_ADMIN.ADD"|tu }}</a>
+        {% else %}
+            <a class="button" href="{{ base_url ~ '/flex-directory/' ~ target }}"><i class="fa fa-reply"></i> {{ "PLUGIN_ADMIN.BACK"|tu }}</a>
+            <button class="button" type="submit" name="task" value="save" form="blueprints"><i class="fa fa-check"></i> {{ "PLUGIN_ADMIN.SAVE"|tu }}</button>
+        {% endif %}
+
+    </div>
+    <h1><i class="fa fa-fw fa-file-text-o"></i> {{ "Les curiositées FoW"|tu }}</h1>
+{% endblock %}
+
+{% block content_top %}
+    <div class="alert notice">{{ "PLUGIN_ADMIN.SAVE_LOCATION"|tu }}: <b>user/data/{{ base_route }}/{{ target }}.json</b></div>
+{% endblock %}
+
+{% block content %}
+    <div id="directory">
+    {% include "partials/"~target~"-"~template~".html.twig" ignore missing %}
+    </div>
+
+        <style>
+
+        .alert.notice {
+              display: none;
+          }
+          #admin-main .admin-block {
+              padding-top: 15px !important;
+              padding-bottom: 10px;
+          }
+
+        </style>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script type="text/javascript">
+
+          $( document ).ready(function() {
+
+            if (window.location.href.indexOf(':add') != -1) {
+
+              var existingNumbers = [];
+
+              $.getJSON( "/grav/user/data/flex-directory/entries.json", function( json ) {
+                  $.each( json, function( key, val ) {
+                      existingNumbers.push(  val.numero );
+                   });
+              });
+
+              $( "#blueprints" ).submit(function( event ) {
+
+                var newNumber = $( ".block-number input" ).val();
+                if(existingNumbers.indexOf(parseInt(newNumber, 10)) != -1){
+                    var message = "Ce numéro de curiosité est déjà pris ..."
+                    if($(".alert-custom").length == 0){
+                      $(".default-box-shadow").prepend('<div class="alert error alert-custom">'+message+'</div>');
+                    }else{
+                      $(".alert-custom").fadeOut();
+                      $(".alert-custom").fadeIn();
+                    }
+                    event.preventDefault();
+                }else{
+                    return;
+                }
+
+              });
+
+            }
+
+          });
+
+        </script>
+
+{% endblock %}

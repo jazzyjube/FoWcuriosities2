@@ -1,0 +1,60 @@
+{% set tbl_data = flex_entries.getData %}
+
+{% set entry_url =  base_url_relative ~ '/' ~ location ~ '/entries/id' ~ separator %}
+
+{% if not tbl_data.toArray|length %}
+    <div class="no-entries">
+        There are currently no entries, click the <a href="{{ base_url ~ '/flex-directory/entries/action:add' }}">Add</a> button to create a new one...
+    </div>
+{% else %}
+    <table id="data-table" class="tablesorter tablesorter-default">
+        <colgroup>
+            <col width="10" />
+            <col width="10" />
+            <col width="30" />
+            <col width="30" />
+        </colgroup>
+        <thead>
+        <tr>
+
+            <th>&nbsp;</th>
+            <th>Numéro <img src="data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==" /></th>
+            <th>Titre <img src="data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==" /></th>
+            <th>Image </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for id,entry in tbl_data.toArray %}
+            <tr>
+
+              <td>
+                  <a href="{{ entry_url ~ id }}"
+                     title="Edit '{{ entry.title }}'"
+                     class="edit-action"><i class="fa fa-pencil"></i></a>
+                  <a href="#delete"
+                     class="page-delete delete-action"
+                     title="Delete '{{ entry.title }}'"
+                     data-remodal-target="delete"
+                     data-delete-url="{{ uri.addNonce(entry_url ~ id  ~ '/action' ~ separator ~ 'delete', 'admin-form', 'admin-nonce') }}"><i class="fa fa-close"></i></a>
+              </td>
+                <td class="numero-cell">
+                    <a href="{{ entry_url ~ id }}">{{ entry.numero }}</a>
+                </td>
+
+                <td>
+                    <a href="{{ entry_url ~ id }}">{{ entry.title }}</a>
+                </td>
+                <td>
+                  {% if entry.image_cover|keys|first %}
+                    <img src="{{ base_url_absolute ~ "/" ~ entry.image_cover|keys|first }}" class="list-picture" />
+                  {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+
+{% include 'partials/modal-remove.html.twig' with { name: 'entry' } %}

@@ -1,0 +1,15 @@
+state: enabled
+_json:
+  avatar: 'null'
+  state: '"enabled"'
+email: pierrick@thecamp.fr
+fullname: Pierrick
+language: en
+twofa_enabled: false
+twofa_secret: TPQC7EMNU5IPFZ4G53WE73WDBRVZOQOY
+groups:
+  - Contributeur
+access:
+  site: {  }
+  admin: {  }
+  admin-addon-user-manager: {  }
