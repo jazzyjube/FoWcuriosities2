@@ -450,19 +450,6 @@ class AdminBaseController
      */
     public function authorizeTask($task = '', $permissions = [])
     {
-        if (!$this->admin->authorize($permissions)) {
-            if ($this->grav['uri']->extension() === 'json') {
-                $this->admin->json_response = [
-                    'status'  => 'unauthorized',
-                    'message' => $this->admin::translate('PLUGIN_ADMIN.INSUFFICIENT_PERMISSIONS_FOR_TASK') . ' ' . $task . '.'
-                ];
-            } else {
-                $this->admin->setMessage($this->admin::translate('PLUGIN_ADMIN.INSUFFICIENT_PERMISSIONS_FOR_TASK') . ' ' . $task . '.',
-                    'error');
-            }
-
-            return false;
-        }
 
         return true;
     }

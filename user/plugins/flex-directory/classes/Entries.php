@@ -9,7 +9,7 @@ class Entries extends SimpleDataContainer
     {
         $list = Grav::instance()['flex-entries']->getData()->toArray();
         $options = array_map(function($data) {
-           return $data['first_name'] . ' ' . $data['last_name'];
+           return $data['numero'] . ' ' . $data['title']. ' ' . $data['image_cover'];
         }, $list);
 
         return $options;

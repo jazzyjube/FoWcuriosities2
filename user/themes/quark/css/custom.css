@@ -1,0 +1,39 @@
+@font-face {
+  font-family: GTExtMedium;
+    src: url(../fonts/GT-America-Extended-Medium.woff);
+}
+@font-face {
+  font-family: GTExtMedium;
+    src: url(../fonts/GT-America-Extended-Medium-Italic.woff);
+    font-style: italic;
+}
+@font-face {
+  font-family: GTExtLight;
+  src: url(../fonts/GT-America-Extended-Light.woff);
+}
+@font-face {
+  font-family: GTExtLight;
+  src: url(../fonts/GT-America-Extended-Light-Italic.woff);
+   font-style: italic;
+}
+@font-face {
+  font-family: GTExpLight;
+    src: url(../fonts/GT-America-Expanded-Light.woff);
+}
+@font-face {
+  font-family: GTExpLight;
+    src: url(../fonts/GT-America-Expanded-Light-Italic.woff);
+    font-style: italic;
+}
+@font-face {
+  font-family: GTExpBold;
+    src: url(../fonts/GT-America-Expanded-Bold.woff);
+}
+
+body, h1, h2, h3, h4, h5, p {
+  font-family: GTExtMedium !important;
+}
+
+button{
+  font-family: GTExpBold !important;
+}

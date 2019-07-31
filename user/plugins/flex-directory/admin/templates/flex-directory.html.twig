@@ -60,7 +60,7 @@
 
               var existingNumbers = [];
 
-              $.getJSON( "/grav/user/data/flex-directory/entries.json", function( json ) {
+              $.getJSON( "{{ home_url }}/user/data/flex-directory/entries.json", function( json ) {
                   $.each( json, function( key, val ) {
                       existingNumbers.push(  val.numero );
                    });

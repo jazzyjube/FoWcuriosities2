@@ -26,15 +26,14 @@ body {
 
 .numero-cell a {
   background: #3290d9;
-    color: white !important;
-    width: 35px;
-    height: 35px;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 21px;
-    font-weight: bold;
-    font-size: 18px;
+  color: white !important;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 21px;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px 15px;
 }
 #data-table .delete-action {
     float: left !important;

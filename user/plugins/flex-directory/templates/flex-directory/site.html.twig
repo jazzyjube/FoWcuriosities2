@@ -1,41 +1,41 @@
-{% set data = flex_entries.getData().toArray()|sort_by_key('last_name') %}
+{% set data = flex_entries.getData().toArray()|sort_by_key('numero') %}
+{% set data2 = curiosity_requested %}
+
+<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
 <div id="flex-directory">
     <div class="text-center">
-        <input class="form-input search" type="text" placeholder="Search by name, email, etc" />
-        <button class="button button-primary sort asc" data-sort="name">
-            Sort by Name
-        </button>
+        <h5>Découvrez les autres curiosités !</h5>
     </div>
-
-    <ul class="list">
-        {% for entry in data if entry.published %}
+      <ul class="list">
+        {% for entry in data %}
             <li>
                 <div class="entry-details">
-                    {% if entry.website %}
-                        <a href="{{ entry.website }}"><span class="name">{{ entry.last_name }}, {{ entry.first_name }}</span></a>
-                    {% else %}
-                        <span class="name">{{ entry.last_name }}, {{ entry.first_name }}</span>
-                    {% endif %}
-                    {% if entry.email %}
-                        <p><a href="mailto:{{ entry.email }}" class="email">{{ entry.email }}</a></p>
-                    {% endif %}
+                  <p class="numero" style="float:left">
+                     {{ entry.numero }}
+                  </p>
+                  <p class="knowmore" style="float:right">
+                     <a href="?curiosity={{ entry.numero }}">En savoir plus</a>
+                  </p>
+                  <p class="title" style="clear:both">
+                     {{ entry.title }}
+                  </p>
                 </div>
-                <div class="entry-extra">
-                    {% for tag in entry.tags %}
-                        <span>{{ tag }}</span>
-                    {% endfor %}
-                </div>
+                {% if (entry.image_cover) %}
+                  <div class="entry-extra">
+                    <p>
+                      <img src="{{ base_url_absolute ~ "/" ~ entry.image_cover|keys|first }}" class="list-picture" />
+                    </p>
+                  </div>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
 </div>
 
-<script>
-    var options = {
-        valueNames: [ 'name', 'email', 'website', 'entry-extra' ]
-    };
 
-    var flexList = new List('flex-directory', options);
-</script>
-
-
+<script src="{{ theme_url }}/js/demo.js"></script>
+<script src="{{ theme_url }}/js/three.min.js"></script>
+<script src="{{ theme_url }}/js/perlin.js"></script>
+<script src="{{ theme_url }}/js/TweenMax.min.js"></script>
+<script src="{{ theme_url }}/js/demo3.js"></script>

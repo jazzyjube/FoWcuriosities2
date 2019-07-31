@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1564066513,
-    'checksum' => '181f44d5abd5956480283123a0d2df0d',
+    'timestamp' => 1564414200,
+    'checksum' => 'f3db7b990e41683bb264a4f70e6f8a96',
     'files' => [
         'user/config' => [
             'backups' => [
@@ -11,7 +11,7 @@ return [
             ],
             'groups' => [
                 'file' => 'user/config/groups.yaml',
-                'modified' => 1563368687
+                'modified' => 1564400352
             ],
             'media' => [
                 'file' => 'user/config/media.yaml',
@@ -47,7 +47,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1564066513
+                'modified' => 1564414200
             ]
         ],
         'system/config' => [
@@ -947,7 +947,7 @@ node_modules'
                 'override_locale' => false
             ],
             'home' => [
-                'alias' => '/home',
+                'alias' => '/flex',
                 'hide_in_urls' => false
             ],
             'pages' => [
@@ -1134,11 +1134,11 @@ node_modules'
                 'readableName' => 'Contributeur',
                 'access' => [
                     'site' => [
-                        'login' => 'true'
+                        'login' => true
                     ],
                     'admin' => [
-                        'super' => 'false',
-                        'login' => 'true',
+                        'super' => false,
+                        'login' => true,
                         'cache' => 'false',
                         'configuration' => 'false',
                         'configuration_system' => 'false',
@@ -1152,7 +1152,7 @@ node_modules'
                         'plugins' => 'false',
                         'themes' => 'false',
                         'tools' => 'false',
-                        'users' => 'false',
+                        'users' => 'true',
                         'flex-directory' => 'true'
                     ],
                     'admin-addon-user-manager' => [

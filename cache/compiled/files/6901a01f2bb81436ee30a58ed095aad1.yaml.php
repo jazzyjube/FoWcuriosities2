@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Applications/MAMP/htdocs/FoWcuriosities/user/accounts/pierrick.yaml',
-    'modified' => 1564066045,
+    'modified' => 1564400305,
     'data' => [
         'state' => 'enabled',
         '_json' => [

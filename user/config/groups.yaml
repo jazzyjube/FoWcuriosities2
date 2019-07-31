@@ -3,10 +3,10 @@ Contributeur:
   readableName: Contributeur
   access:
     site:
-      login: 'true'
+      login: true
     admin:
-      super: 'false'
-      login: 'true'
+      super: false
+      login: true
       cache: 'false'
       configuration: 'false'
       configuration_system: 'false'
@@ -20,7 +20,7 @@ Contributeur:
       plugins: 'false'
       themes: 'false'
       tools: 'false'
-      users: 'false'
+      users: 'true'
       flex-directory: 'true'
     admin-addon-user-manager:
       users: 'false'

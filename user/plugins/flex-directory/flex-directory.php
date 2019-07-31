@@ -151,9 +151,10 @@ class FlexDirectoryPlugin extends Plugin
             $this->grav['twig']->twig_vars['task'] = $this->controller->getTask();
             $this->grav['twig']->twig_vars['target'] = $this->controller->getTarget();
 
+
             // CSS / JS Assets
             $this->grav['assets']->addCss('plugin://flex-directory/css/admin.css');
-            
+
             if ($this->controller->getTarget() == 'entries' && $this->controller->getAction() == 'list') {
                 $this->grav['assets']->addCss('plugin://flex-directory/css/filter.formatter.css');
                 $this->grav['assets']->addCss('plugin://flex-directory/css/theme.default.css');
@@ -168,6 +169,8 @@ class FlexDirectoryPlugin extends Plugin
             if ($this->config->get('plugins.flex-directory.built_in_css')) {
                 $this->grav['assets']->addCss('plugin://flex-directory/css/site.css');
             }
+
+            $this->grav['twig']->twig_vars['curiosity_requested'] = (isset($_GET["curiosity"])) ? $_GET["curiosity"] : '';
             $this->grav['assets']->addJs('plugin://flex-directory/js/list.min.js');
         }
     }

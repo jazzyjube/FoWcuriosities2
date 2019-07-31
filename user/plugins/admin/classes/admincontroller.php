@@ -1547,7 +1547,7 @@ class AdminController extends AdminBaseController
      */
     protected function taskListmedia()
     {
-        if (!$this->authorizeTask('list media', ['admin.pages', 'admin.super'])) {
+        if (!$this->authorizeTask('list media', ['admin.login', 'admin.flex-directory'])) {
             return false;
         }
 
@@ -1624,7 +1624,7 @@ class AdminController extends AdminBaseController
      */
     protected function taskAddmedia()
     {
-        if (!$this->authorizeTask('add media', ['admin.pages', 'admin.super'])) {
+        if (!$this->authorizeTask('add media', ['admin.login', 'admin.flex-directory'])) {
             return false;
         }
 
@@ -1784,7 +1784,7 @@ class AdminController extends AdminBaseController
      */
     protected function taskDelmedia()
     {
-        if (!$this->authorizeTask('delete media', ['admin.pages', 'admin.super'])) {
+        if (!$this->authorizeTask('delete media', ['admin.login', 'admin.flex-directory'])) {
             return false;
         }
 

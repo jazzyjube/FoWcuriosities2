@@ -38,6 +38,7 @@
 </head>
 <body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}">
     <div id="page-wrapper">
+
     {% block header deferred %}
         <section id="header" class="section">
             <section class="container {{ grid_size }}">
@@ -45,29 +46,23 @@
                     <section class="navbar-section logo">
                         {% include 'partials/logo.html.twig' %}
                     </section>
-                    <section class="navbar-section desktop-menu">
-
-                        <nav class="dropmenu animated">
-                        {% block header_navigation %}
-                            {% include 'partials/navigation.html.twig' %}
-                        {% endblock %}
-                        </nav>
-
-                        {% if config.plugins.login.enabled and grav.user.username %}
-                            <span class="login-status-wrapper"><i class="fa fa-user"></i> {% include 'partials/login-status.html.twig' %}</span>
-                        {% endif %}
-
-                    </section>
                 </nav>
             </section>
         </section>
-        <div class="mobile-menu">
-            <div class="button_container" id="toggle">
-                <span class="top"></span>
-                <span class="middle"></span>
-                <span class="bottom"></span>
-            </div>
+    {% endblock %}
+
+    {% block header_animation %}
+      <div class="content">
+        <canvas class="scene scene--full" id="scene"></canvas>
+        <div class="content__inner">
+          <div class="content__title">
+            <h5>Vous voulez en savoir plus sur une curiosité ?</h5>
+            <input class="form-input search" type="number" placeholder="C'est ici que vous rentrez le numéro !"/>
+            <button  class="submit-curiosity-number">GO</button>
+          </div>
         </div>
+      </div>
+
     {% endblock %}
 
     {% block hero %}{% endblock %}

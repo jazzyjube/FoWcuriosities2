@@ -1,10 +1,40 @@
+.demo-3 {
+	--color-text: #fff;
+	--color-bg: #A9E7DA;
+	--color-link: #523bdc;
+	--color-link-hover: #fff;
+	--color-title: #fff;
+}
+
+.content__title {
+	font-family: 'Poppins', sans-serif;
+	letter-spacing: -0.025em;
+	font-size: 7vw;
+	color: var(--color-title);
+	line-height: 1;
+	margin: 0;
+	position: relative;
+}
+
+@media screen and (max-width: 55em) {
+	.content__title::before,
+	.content__title::after {
+		width: 50px;
+		height: 100px;
+		background-size: 12px;
+	}
+}
+
+
 #flex-directory .text-center {
   text-align: center; }
 
 #flex-directory .search {
   display: inline-block;
   width: 50%;
-  padding: 0.7rem; }
+  padding: 0.7rem;
+  text-align: center;
+ }
 
 #flex-directory button.sort {
   vertical-align: top; }
@@ -17,10 +47,52 @@
 
 #flex-directory ul {
   margin: 3rem 0; }
+
   #flex-directory ul li {
     display: inline-block;
-    width: 33%;
-    margin: 1rem 0; }
+    width: 30%;
+    margin: 11px;
+    padding: 20px;
+    border: 1px solid #eee;
+   }
+   #header .logo img, #header .logo svg {
+       height: 40px !important;
+   }
+
+
+.submit-curiosity-number {
+  padding: 10px 15px;
+  background: #3290da;
+  color: white;
+  border: 0;
+  border-radius: 4px;
+  font-size: 18px;
+  top: -40px;
+  position: relative;
+}
+
+.content__title input {
+  width: 300px;
+  margin: 0 auto;
+}
+
+   #flex-directory ul li .numero {
+     background: #3290d9;
+     color: white !important;
+     display: block;
+     text-align: center;
+     vertical-align: middle;
+     border-radius: 21px;
+     font-weight: bold;
+     font-size: 18px;
+     padding: 5px 15px;
+  }
+
+  #flex-directory ul li p.title {
+    font-weight: bold;
+    padding: 10px 0;
+  }
+
     #flex-directory ul li .entry-details .name {
       font-weight: bold;
       font-size: 120%; }
@@ -40,4 +112,30 @@
   #flex-directory ul li {
     width: 100%; } }
 
-/*# sourceMappingURL=../css/site.css.map */
+
+
+.content {
+	position: relative;
+	margin: 0 auto;
+	min-height: 75vh;
+}
+
+.content h5 {
+	letter-spacing: normal;
+}
+
+.content__inner{
+  width: 100%;
+  position: absolute;
+  top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.scene--full {
+    width: 100%;
+    height: 75vh;
+}
