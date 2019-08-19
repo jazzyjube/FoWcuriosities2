@@ -170,7 +170,8 @@ class FlexDirectoryPlugin extends Plugin
                 $this->grav['assets']->addCss('plugin://flex-directory/css/site.css');
             }
 
-            $this->grav['twig']->twig_vars['curiosity_requested'] = (isset($_GET["curiosity"])) ? $_GET["curiosity"] : '';
+            $this->grav['twig']->twig_vars['curiosity_requested'] = (isset($_GET["id"])) ? $_GET["id"] : '';
+            $this->grav['twig']->twig_vars['error_display'] = (isset($_GET["error"])) ? $_GET["error"] : '';
             $this->grav['assets']->addJs('plugin://flex-directory/js/list.min.js');
         }
     }

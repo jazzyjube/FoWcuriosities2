@@ -1,4 +1,8 @@
 @font-face {
+  font-family: GTExpMedium;
+    src: url(../fonts/GT-America-Expanded-Medium.ttf);
+}
+@font-face {
   font-family: GTExtMedium;
     src: url(../fonts/GT-America-Extended-Medium.woff);
 }
@@ -29,11 +33,19 @@
   font-family: GTExpBold;
     src: url(../fonts/GT-America-Expanded-Bold.woff);
 }
-
-body, h1, h2, h3, h4, h5, p {
-  font-family: GTExtMedium !important;
+@font-face {
+  font-family: MaisonNeue;
+    src: url(../fonts/MaisonMono-Light.woff2);
 }
 
-button{
-  font-family: GTExpBold !important;
+body, h1, h2, h3, h4, h5, p, button {
+  font-family: GTExpMedium !important;
+}
+
+
+#header .navbar-section {
+    height: 5.5rem;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }

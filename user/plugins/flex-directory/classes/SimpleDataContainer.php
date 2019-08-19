@@ -111,6 +111,25 @@ class SimpleDataContainer
         return $this->data;
     }
 
+    /**
+     * Get Directory
+     *
+     * @param null $id
+     * @return mixed
+     */
+    public function getEntriesPerNumero($numero = null)
+    {
+        if ($numero) {
+            $obj = $this->filterData($numero, "numero");
+        } else {
+            $obj = $this->getData();
+        }
+
+        return $obj;
+    }
+
+
+
     public function setData($data)
     {
         $this->data = $data;

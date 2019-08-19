@@ -1,7 +1,177 @@
-{% extends 'partials/base.html.twig' %}
+{% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', 'sticky-footer']) %}
+{% set grid_size = theme_var('grid-size') %}
+{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
+<head>
+{% block head deferred %}
+    <meta charset="utf-8" />
+    <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
 
-{% block content %}
-    {{ page.content }}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'partials/metadata.html.twig' %}
 
-    {% include 'flex-directory/site.html.twig' %}
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+{% endblock head %}
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css-compiled/spectre'~compress) %}
+    {% if theme_var('spectre.exp') %}{% do assets.addCss('theme://css-compiled/spectre-exp'~compress)  %}{% endif %}
+    {% if theme_var('spectre.icons') %}{%  do assets.addCss('theme://css-compiled/spectre-icons'~compress) %}{% endif %}
+    {% do assets.addCss('theme://css-compiled/theme'~compress) %}
+    {% do assets.addCss('theme://css/custom.css') %}
+    {% do assets.addCss('theme://css/line-awesome.min.css') %}
 {% endblock %}
+
+{% block javascripts %}
+    {% do assets.addJs('jquery', 101) %}
+    {% do assets.addJs('theme://js/jquery.treemenu.js', {group:'bottom'}) %}
+    {% do assets.addJs('theme://js/site.js', {group:'bottom'}) %}
+{% endblock %}
+
+{% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+{% endblock %}
+</head>
+{% set data = flex_entries.getData().toArray()|sort_by_key('numero') %}
+<body id="top" class="{% block body_classes %}{{ body_classes }}{% endblock %}">
+    <div id="page-wrapper">
+
+    {% block header deferred %}
+        <section id="header" class="section">
+          <section class="navbar-section-black">
+          </section>
+            <section class="container {{ grid_size }}">
+                <nav class="navbar">
+
+                    <section class="navbar-section logo">
+                        {% include 'partials/logo.html.twig' %}
+                    </section>
+                </nav>
+            </section>
+        </section>
+    {% endblock %}
+
+    {% block header_animation %}
+    {% set error = error_display %}
+      <div class="content">
+        <canvas class="scene scene--full" id="scene"></canvas>
+        <div class="content__inner">
+          <div class="content__title">
+            <h5>Numéro de la curiosité</h5>
+            <div class="input_wrapper_1ftk40d">
+              <div class="input_container_17vxf5i" >
+                <input class="input_mzsud6" max="999" type="number" >
+                <div class="borders_top_1"></div>
+                <div class="borders_top_2" ></div>
+                <div class="borders_top_3"></div>
+
+                <div class="borders_11t1oyo-o_O-border_wpslkv"></div>
+                <div class="borders_11t1oyo-o_O-border_1uqnik8" ></div>
+                <div class="borders_11t1oyo-o_O-border_14lh2hc"></div>
+              </div>
+            </div>
+            {% if (error is not empty) %}
+              <p class="error-home">
+                Curiosité introuvable ...<br /> Éssayez un autre numéro ! 
+              </p>
+            {% endif %}
+            <button  class="submit-curiosity-number">Rechercher</button>
+          </div>
+        </div>
+      </div>
+
+    {% endblock %}
+
+    {% block hero %}{% endblock %}
+
+        <section id="start">
+        {% block body %}
+            <section id="body-wrapper" class="section">
+                <section class="container {{ grid_size }}">
+                    {% block messages %}
+                        {% include 'partials/messages.html.twig' ignore missing %}
+                    {% endblock %}
+                    {% block content %}
+                      <div id="flex-directory">
+                          <div class="text-center">
+                              <h5><a href="{{ base_url }}/all-curiosities">Explorez les autres curiosités</a></h5>
+                          </div>
+                      </div>
+                    {% endblock %}
+                </section>
+            </section>
+        {% endblock %}
+        </section>
+
+    </div>
+
+
+    {% block footer %}
+        {% include 'partials/footer.html.twig' %}
+    {% endblock %}
+
+    <div class="mobile-container">
+        <div class="overlay" id="overlay">
+            <div class="mobile-logo">
+                {% include 'partials/logo.html.twig' with {mobile: true} %}
+            </div>
+            <nav class="overlay-menu">
+                {% include 'partials/navigation.html.twig' with {tree: true} %}
+            </nav>
+        </div>
+    </div>
+
+{% block bottom %}
+    {{ assets.js('bottom')|raw }}
+{% endblock %}
+
+
+<script type="text/javascript">
+
+function redirectToCuriosity () {
+  var inputNumber = $(".input_mzsud6").val();
+  if (inputNumber != undefined && inputNumber.length > 0){
+    window.location.href = "{{ base_url }}/curiosity?id="+inputNumber;
+  }
+}
+
+$(".submit-curiosity-number").click(function () {
+  redirectToCuriosity();
+});
+$(".input_mzsud6").on('keypress',function(e) {
+    if(e.which == 13) {
+        redirectToCuriosity();
+    }
+});
+
+
+
+var max_chars = 3;
+
+$('.input_mzsud6').keydown( function(e){
+    if ($(this).val().length >= max_chars) {
+        $(this).val($(this).val().substr(0, max_chars));
+        $(this).addClass("input_max_width");
+    }else {
+        $(this).removeClass("input_max_width");
+    }
+});
+
+
+$('.input_mzsud6').keyup( function(e){
+    if ($(this).val().length >= max_chars) {
+        $(this).val($(this).val().substr(0, max_chars));
+          $(this).addClass("input_max_width");
+    }else {
+        $(this).removeClass("input_max_width");
+    }
+});
+
+</script>
+
+</body>
+</html>

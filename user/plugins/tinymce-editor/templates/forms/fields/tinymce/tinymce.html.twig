@@ -48,7 +48,8 @@
 				{% endfor %}
 			],
 			branding:{% if config.plugins["tinymce-editor"].branding %}true{% else %}false{% endif %},
-			statusbar:{% if config.plugins["tinymce-editor"].statusbar %}true{% else %}false{% endif %}
+			statusbar:{% if config.plugins["tinymce-editor"].statusbar %}true{% else %}false{% endif %},
+			paste_word_valid_elements: "b,strong,i,em,h1,h2,h3,h4,h5,p"
 		});
 		$(window).on("load", function() {
 

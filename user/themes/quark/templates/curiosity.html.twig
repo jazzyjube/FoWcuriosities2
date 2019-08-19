@@ -54,47 +54,73 @@
         </section>
     {% endblock %}
 
-    {% block header_animation %}
-      <div class="content">
-        <canvas class="scene scene--full" id="scene"></canvas>
-        <div class="content__inner">
-          <div class="content__title">
-            <h5>Numéro de la curiosité</h5>
-            <div class="input_wrapper_1ftk40d">
-              <div class="input_container_17vxf5i" >
-                <input class="input_mzsud6" maxlength="3" size="3" type="number" value="" >
-                <div class="borders_top_1"></div>
-                <div class="borders_top_2" ></div>
-                <div class="borders_top_3"></div>
+{% set numero = curiosity_requested %}
+{% set entry = flex_entries.getEntriesPerNumero(numero) %}
 
-                <div class="borders_11t1oyo-o_O-border_wpslkv"></div>
-                <div class="borders_11t1oyo-o_O-border_1uqnik8" ></div>
-                <div class="borders_11t1oyo-o_O-border_14lh2hc"></div>
-              </div>
+  {% if (entry is empty) %}
+    {{ redirect_me(base_url ~ "?error=notfound", 302) }}
+  {% else %}
+    <div class="content-curiosity-list">
+      <div class="entry-details" style="text-align:left !important;">
+        {% if (entry.image_cover) %}
+          <div class="entry-extra">
+            <p>
+              <img src="{{ base_url_absolute ~ "/" ~ entry.image_cover|keys|first }}" class="list-picture" />
+            </p>
+          </div>
+        {% endif %}
+        <p class="numero" >
+           Curiosité № {{ entry.numero }}
+        </p>
+        <p class="title">
+           {{ entry.title }}
+        </p>
+        <div class="description">
+
+            <div class="entry-content">
+              <h8>Qu’est ce que c’est ?</h8>
+              {{ entry.description }}
             </div>
-            <button  class="submit-curiosity-number">Rechercher</button>
+
+        </div>
+        <div class="pourquoi">
+
+          <div class="entry-content">
+          <h8>Pourquoi ca nous interpelle ?</h8>
+           {{ entry.why }}
+          </div>
+        </div>
+        <div class="sources">
+
+          <div class="entry-content">
+            <h8>Pour aller plus loin</h8>
+             {{ entry.learnmore }}
           </div>
         </div>
       </div>
 
-    {% endblock %}
-
-    {% block hero %}{% endblock %}
-
-        <section id="start">
-        {% block body %}
-            <section id="body-wrapper" class="section">
-                <section class="container {{ grid_size }}">
-                    {% block messages %}
-                        {% include 'partials/messages.html.twig' ignore missing %}
-                    {% endblock %}
-                    {% block content %}{% endblock %}
-                </section>
-            </section>
-        {% endblock %}
-        </section>
-
     </div>
+
+  {% endif %}
+
+  <section id="start">
+  {% block body %}
+      <section id="body-wrapper" class="section">
+          <section class="container {{ grid_size }}">
+              {% block messages %}
+                  {% include 'partials/messages.html.twig' ignore missing %}
+              {% endblock %}
+              {% block content %}
+                <div id="flex-directory">
+                    <div class="text-center">
+                        <h5><a href="{{ base_url }}/all-curiosities">Explorez les autres curiosités</a></h5>
+                    </div>
+                </div>
+              {% endblock %}
+          </section>
+      </section>
+  {% endblock %}
+  </section>
 
     {% block footer %}
         {% include 'partials/footer.html.twig' %}

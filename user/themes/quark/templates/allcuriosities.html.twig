@@ -54,46 +54,35 @@
         </section>
     {% endblock %}
 
-    {% block header_animation %}
-      <div class="content">
-        <canvas class="scene scene--full" id="scene"></canvas>
-        <div class="content__inner">
-          <div class="content__title">
-            <h5>Numéro de la curiosité</h5>
-            <div class="input_wrapper_1ftk40d">
-              <div class="input_container_17vxf5i" >
-                <input class="input_mzsud6" maxlength="3" size="3" type="number" value="" >
-                <div class="borders_top_1"></div>
-                <div class="borders_top_2" ></div>
-                <div class="borders_top_3"></div>
 
-                <div class="borders_11t1oyo-o_O-border_wpslkv"></div>
-                <div class="borders_11t1oyo-o_O-border_1uqnik8" ></div>
-                <div class="borders_11t1oyo-o_O-border_14lh2hc"></div>
-              </div>
-            </div>
-            <button  class="submit-curiosity-number">Rechercher</button>
-          </div>
-        </div>
-      </div>
+    {% set data = flex_entries.getData().toArray()|sort_by_key('numero') %}
+    {% set data2 = curiosity_requested %}
+<div class="content-curiosity-list">
 
-    {% endblock %}
+      <ul class="list">
+          {% for entry in data %}
+              <li>
+                <a href="{{ base_url }}/curiosity?id={{ entry.numero }}">
+                  <div class="entry-details">
+                    {% if (entry.image_cover) %}
+                      <div class="entry-extra">
+                        <p>
+                          <img src="{{ base_url_absolute ~ "/" ~ entry.image_cover|keys|first }}" class="list-picture" />
+                        </p>
+                      </div>
+                    {% endif %}
+                    <p class="numero" >
+                       Curiosité № {{ entry.numero }}
+                    </p>
+                    <p class="knowmore">
+                        {{ entry.title }}
+                    </p>
 
-    {% block hero %}{% endblock %}
-
-        <section id="start">
-        {% block body %}
-            <section id="body-wrapper" class="section">
-                <section class="container {{ grid_size }}">
-                    {% block messages %}
-                        {% include 'partials/messages.html.twig' ignore missing %}
-                    {% endblock %}
-                    {% block content %}{% endblock %}
-                </section>
-            </section>
-        {% endblock %}
-        </section>
-
+                  </div>
+                </a>
+              </li>
+          {% endfor %}
+      </ul>
     </div>
 
     {% block footer %}
