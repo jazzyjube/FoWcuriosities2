@@ -11,8 +11,8 @@
             {% if custom_admin_logo %}
                 <img src="{{ url(custom_admin_logo) }}" title="{{ site.title }}" />
             {% else %}
-                {% include('@admin-images/grav-small.svg') %}
-                {% include('@admin-images/grav-regular.svg') %}
+            <img src="{{ base_url_absolute }}/user/themes/quark/images/thecampFOW_white.png" title="Login" />
+
             {% endif %}
         </a>
         <a class="front-end hint--left" data-hint="{{ "PLUGIN_ADMIN.VIEW_SITE_TIP"|tu }}" target="_blank" href="{{ base_url_relative_frontend }}"> <i class="fa fa-external-link"></i></a>

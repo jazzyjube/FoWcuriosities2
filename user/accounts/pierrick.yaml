@@ -4,12 +4,13 @@ _json:
   state: '"enabled"'
 email: pierrick@thecamp.fr
 fullname: Pierrick
-language: en
+language: fr
 twofa_enabled: false
-twofa_secret: TPQC7EMNU5IPFZ4G53WE73WDBRVZOQOY
+twofa_secret: PJCUBJINHWF3WRDMCXREWU2CBYP32QMZ
 groups:
   - Contributeur
 access:
   site: {  }
   admin: {  }
   admin-addon-user-manager: {  }
+hashed_password: $2y$10$skmEIp6645LZO1diY.R5ku9qeLmpwzpDg70f1aeINvXK4gSY/gQZC

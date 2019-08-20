@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Applications/MAMP/htdocs/FoWcuriosities/user/accounts/pierrick.yaml',
-    'modified' => 1564400305,
+    'modified' => 1566228360,
     'data' => [
         'state' => 'enabled',
         '_json' => [
@@ -11,9 +11,9 @@ return [
         ],
         'email' => 'pierrick@thecamp.fr',
         'fullname' => 'Pierrick',
-        'language' => 'en',
+        'language' => 'fr',
         'twofa_enabled' => false,
-        'twofa_secret' => 'TPQC7EMNU5IPFZ4G53WE73WDBRVZOQOY',
+        'twofa_secret' => 'PJCUBJINHWF3WRDMCXREWU2CBYP32QMZ',
         'groups' => [
             0 => 'Contributeur'
         ],
@@ -27,6 +27,7 @@ return [
             'admin-addon-user-manager' => [
                 
             ]
-        ]
+        ],
+        'hashed_password' => '$2y$10$skmEIp6645LZO1diY.R5ku9qeLmpwzpDg70f1aeINvXK4gSY/gQZC'
     ]
 ];

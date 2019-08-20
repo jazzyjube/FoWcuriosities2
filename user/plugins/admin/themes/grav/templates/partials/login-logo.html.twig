@@ -3,6 +3,11 @@
         {{ config.plugins.admin.logo_text }}
     </h1>
 {% else %}
+<style>
+.primary-accent a.button.secondary {
+    display: none;
+}
+</style>
     <h1 class="{{ custom_login_logo ? 'custom-logo' : 'default-logo' }}">
         {{ title }}
         {% if custom_login_logo %}

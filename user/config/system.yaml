@@ -91,7 +91,7 @@ cache:
   allow_webserver_gzip: false
 twig:
   cache: true
-  debug: true
+  debug: false
   auto_reload: true
   autoescape: false
   undefined_functions: true
@@ -119,7 +119,7 @@ log:
   syslog:
     facility: local6
 debugger:
-  enabled: true
+  enabled: false
   shutdown:
     close_connection: true
   twig: true
