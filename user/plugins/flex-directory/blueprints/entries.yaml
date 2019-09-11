@@ -36,10 +36,10 @@ form:
         validate:
           required: true
     why:
-        label: Pourquoi ca nous interpelle sur le futur du travail ?
+        label: Pourquoi ça nous interpelle ?
         type: tinymce
     learnmore:
-        label: Sources, Pour en savoir plus...
+        label: Pour aller plus loin...
         type: tinymce
 
          # Don't mess with this stuff below unless you know what you are doing

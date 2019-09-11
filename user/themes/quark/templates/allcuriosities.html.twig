@@ -58,6 +58,15 @@
     {% set data = flex_entries.getData().toArray()|sort_by_key('numero') %}
     {% set data2 = curiosity_requested %}
 <div class="content-curiosity-list">
+  <section id="body-wrapper" class="section home-link">
+    <section class="container grid-lg">
+      <div id="flex-directory">
+          <div class="text-center">
+              <h5><a href="{{ base_url }}">Entrez un numéro de curiosité</a></h5>
+          </div>
+      </div>
+    </section>
+  </section>
 
       <ul class="list">
           {% for entry in data %}
@@ -74,7 +83,7 @@
                     <p class="numero" >
                        Curiosité № {{ entry.numero }}
                     </p>
-                    <p class="knowmore">
+                    <p class="knowmore title-field">
                         {{ entry.title }}
                     </p>
 

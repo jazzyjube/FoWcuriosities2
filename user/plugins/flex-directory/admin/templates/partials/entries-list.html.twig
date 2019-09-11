@@ -57,4 +57,25 @@
 
 {% endif %}
 
+
+<script>
+        ((function($) {
+            var list = $('#data-table');
+            list.tablesorter({
+                theme: 'blue',
+                cssChildRow: 'tablesorter-childRow',
+                widgets: ['zebra', 'filter'],
+                headers: {
+                    1: { sorter: true, filter: false },
+                    2: { sorter: true, filter: false },
+                    3: { sorter: false, filter: false }
+                }
+            });
+            list.find('.tablesorter-childRow td').addClass('hidden');
+            $('#pager button').on('click', function(e) { e.preventDefault(); });
+        })(jQuery));
+
+        $("th[data-column=1]").trigger( "click" );
+    </script>
+
 {% include 'partials/modal-remove.html.twig' with { name: 'entry' } %}

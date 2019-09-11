@@ -72,31 +72,35 @@
         <p class="numero" >
            Curiosité № {{ entry.numero }}
         </p>
-        <p class="title">
+        <p class="title title-field">
            {{ entry.title }}
         </p>
         <div class="description">
-
             <div class="entry-content">
               <h8>Qu’est ce que c’est ?</h8>
               {{ entry.description }}
             </div>
 
         </div>
-        <div class="pourquoi">
 
-          <div class="entry-content">
-          <h8>Pourquoi ca nous interpelle ?</h8>
-           {{ entry.why }}
-          </div>
-        </div>
-        <div class="sources">
+        {% if (entry.why) %}
+          <div class="pourquoi">
 
-          <div class="entry-content">
-            <h8>Pour aller plus loin</h8>
-             {{ entry.learnmore }}
+            <div class="entry-content">
+            <h8>Pourquoi ça nous interpelle ?</h8>
+             {{ entry.why }}
+            </div>
           </div>
-        </div>
+        {% endif %}
+        {% if (entry.learnmore) %}
+          <div class="sources">
+
+            <div class="entry-content">
+              <h8>Pour aller plus loin...</h8>
+               {{ entry.learnmore }}
+            </div>
+          </div>
+        {% endif %}
       </div>
 
     </div>
@@ -105,6 +109,7 @@
 
   <section id="start">
   {% block body %}
+
       <section id="body-wrapper" class="section">
           <section class="container {{ grid_size }}">
               {% block messages %}
@@ -119,6 +124,17 @@
               {% endblock %}
           </section>
       </section>
+
+      <section id="body-wrapper" class="section home-link2">
+        <section class="container grid-lg">
+          <div id="flex-directory">
+              <div class="text-center">
+                  <h5><a href="{{ base_url }}">Entrez un numéro de curiosité</a></h5>
+              </div>
+          </div>
+        </section>
+      </section>
+
   {% endblock %}
   </section>
 

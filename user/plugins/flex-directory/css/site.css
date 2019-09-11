@@ -1,4 +1,4 @@
-.demo-3 {
+ .demo-3 {
 	--color-text: #fff;
 	--color-bg: #A9E7DA;
 	--color-link: #523bdc;
@@ -417,8 +417,10 @@ body#top {
 }
 
 ul.list {
-    margin: 0;
     list-style: none;
+    margin: 0;
+    position: relative;
+    top: 49px;
 }
 
 .entry-details {
@@ -427,10 +429,11 @@ ul.list {
     text-align: center;
     color: #000;
     z-index: -5000;
+    max-width: 750px;
 }
 
-a {
-    color: #000!important;
+body p a {
+    color: #000;
 }
 
 p.numero {
@@ -443,6 +446,7 @@ p.numero {
 .entry-details p {
     margin-bottom: 10px;
     width: 100%;
+    font-weight:;
 }
 
 p.knowmore {
@@ -478,6 +482,14 @@ p.description {
     margin-top: 50px;
 }
 
+#page-wrapper {
+	overflow: hidden;
+}
+
+.entry-details {
+	overflow: hidden;
+	margin: 0 auto;
+}
 
 .description {margin-top: 50px;}
 
@@ -491,7 +503,6 @@ p.title {
     font-size: 15px;
 }
 
-
 .pourquoi {
     margin-top: 50px;
 }
@@ -499,3 +510,62 @@ p.title {
 .sources {
     margin-top: 50px;
 }
+
+a:hover {
+	text-decoration: none !important;
+}
+
+@media screen and (max-width: 750px) and (orientation: landscape) {
+  html {
+    /* Rotate the content container */
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    /* Set content width to viewport height */
+    width: 100vh;
+    /* Set content height to viewport width */
+    height: 100vw !important;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+.title-field {
+    text-transform: lowercase;
+}
+.title-field::first-letter {
+    text-transform: capitalize;
+}
+
+body a:visited {
+    color: #000;
+}
+
+
+section.home-link {
+    background: #000 !important;
+    height: 50px !important;
+    position: fixed !important;
+    width: 100% !important;
+    z-index: 34 !important;
+}
+section.home-link2 {
+    background: #000 !important;
+}
+
+body .home-link h5 {
+    margin-top: 15px !important;
+    color: #FFF !important;
+    border-bottom: 2px solid #fff !important;
+}
+section.home-link2 h5 {
+	color: #FFF !important;
+	border-bottom: 2px solid #fff !important;
+}
+
+body .home-link h5 a {color: #FFF;font-size: 11px;cursor: pointer;}
+body .home-link2 h5 a {color: #FFF;cursor: pointer;}
+
+
+section#b {}
